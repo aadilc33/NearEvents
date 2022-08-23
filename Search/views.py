@@ -5,7 +5,7 @@ import json
 # Create your views here.
 
 def search(request):
-    filename = os.path.join(os.getcwd() + "\events\static\json\\test.json")
+    filename = os.path.join(os.getcwd() + "/events/static/json/test.json")
     with open(filename, 'r') as f:
         data = json.loads(f.read())
     print(type(data))
