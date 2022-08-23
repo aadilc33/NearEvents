@@ -72,10 +72,6 @@
             <div class="row-fluid card-deck">
                 <p> {{test}}</p>
                 {% for event in event_list %}
-                {{event}}
-                {% for user in event.attendes.all %}
-                {{user}}
-                {% endfor %}
                 {% if event.Category == "Comedy" %}
                 <div class="col-xs-3 searchCard">
                     <div class="card-columns-fluid">
@@ -115,7 +111,7 @@
         <div class="container comedy">
 
             <div class="row-fluid card-deck">
-                {% for event in test %}
+                {% for event in event_list %}
                 {% if event.Category == "Food" %}
                 <div class="col-xs-3 searchCard">
                     <div class="card-columns-fluid">
@@ -150,7 +146,7 @@
         <div class="container comedy">
             <br>
             <div class="row-fluid card-deck">
-                {% for event in test %}
+                {% for event in event_list %}
                 {% if event.Category == "sport" %}
                 <div class="col-xs-3 searchCard">
                     <div class="card-columns-fluid">
@@ -187,7 +183,7 @@
         <div class="container comedy">
 
             <div class="row-fluid card-deck">
-                {% for event in test %}
+                {% for event in event_list%}
                 {% if event.Category == "experiences" %}
                 <div class="col-xs-3 searchCard">
                     <div class="card-columns-fluid">
@@ -224,7 +220,7 @@
         <div class="container comedy">
 
             <div class="row-fluid card-deck">
-                {% for event in test %}
+                {% for event in event_list%}
                 {% if event.Category == "Concert" %}
                 <div class="col-xs-3 searchCard">
                     <div class="card-columns-fluid">
