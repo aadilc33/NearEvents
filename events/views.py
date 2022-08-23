@@ -8,7 +8,7 @@ def index(request):
     t = []
     temp = {}
     # events = event.objects.all()
-    filename = os.path.join(os.getcwd()+"\events\static\json\\test.json")
+    filename = os.path.join(os.getcwd()+"/events/static/json/test.json")
     with open(filename, 'r') as f:
         event_list = json.loads(f.read())
         print(event_list['test'])
