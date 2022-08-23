@@ -1,0 +1,13 @@
+{% extends "base_index.html" %}
+{% load static %}
+{% block title %}Events {% endblock %}
+{% block content %}
+<center>
+{{month}}
+{{year}}
+{{month_number}}
+{{cal|safe}}
+{{current_year}}
+{{time}}
+</center>
+{% endblock %}

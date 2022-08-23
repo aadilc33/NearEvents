@@ -1,0 +1,19 @@
+{% extends "base_index.html" %}
+{% load static %}
+{% block title %}Events {% endblock %}
+{% block content %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/media/pexels.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/media/pexels.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/media/pexels.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+{{request.POST.get('pizza')}}
+{% endblock %}

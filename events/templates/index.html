@@ -1,0 +1,378 @@
+{% extends "base_index.html" %}
+{% load static %}
+{% block title %}Events {% endblock %}
+{% block content %}
+
+<div class="home">
+    <div class="bd-example">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="#">
+                        <img src="{% static 'media/12.jpg' %}" class="d-block picture"
+                             style="width: 100%;height: 375px;" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>First slide label</h5>
+                            <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'media/3.jpg' %}" class="d-block picture"
+                             style="width: 100%;height: 375px;" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Second slide label</h5>
+                            <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img src="{% static 'media/20.jpg' %}" class="d-block picture"
+                             style="width: 100%;height: 375px;" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Third slide label</h5>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid main1">
+        <div class="test">
+            <h3>Comedy Arts</h3>
+            <div class="text">In need of a good laugh? Looking for some rib-tickling comedy fun? Or perhaps you're eager
+                to witness the latest award-winning Broadway musical or theatre show? Whatever it is you're searching
+                for, our extensive list of cultural happenings will most certainly provide
+            </div>
+        </div>
+        <br>
+        <div class="container comedy">
+            <div class="row-fluid card-deck">
+                <p> {{test}}</p>
+                {% for event in event_list %}
+                {{event}}
+                {% for user in event.attendes.all %}
+                {{user}}
+                {% endfor %}
+                {% if event.Category == "Comedy" %}
+                <div class="col-xs-3 searchCard">
+                    <div class="card-columns-fluid">
+                        <div class="card  bg-light"style="max-width: 20rem;">
+                            <input type="hidden" name="event" value="{{event.id}}">
+                            <img class="card-img-top picture1"
+                                 src="{% static 'media/' %}{{event.pic}}.jpg"
+                                 alt="Card image cap">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{event.name}}</h5>
+                                <p class="card-text">address:
+                                <p style="">{{event.address}}</p></p>
+                                <p class="card-text"><small class="text-muted">Categories:
+                                    {{event.Category}}</small>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid main2">
+        <div class="test">
+            <h3>food & drink</h3>
+            <div class="text">Looking to add a bit of flavour to your search? Whet your appetite at some of the many
+                renowned food and drink festivals, brunch occasions and tasting events that take place year-round,
+                across the British Isles
+            </div>
+        </div>
+        <br>
+        <div class="container comedy">
+
+            <div class="row-fluid card-deck">
+                {% for event in test %}
+                {% if event.Category == "Food" %}
+                <div class="col-xs-3 searchCard">
+                    <div class="card-columns-fluid">
+                        <div class="card  bg-light"style="max-width: 20rem;">
+                            <img class="card-img-top picture1"
+                                 src="{% static 'media/' %}{{event.pic}}.jpg"
+                                 alt="Card image cap">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{event.name}}</h5>
+                                <p class="card-text">address:
+                                <p style="">{{event.address}}</p></p>
+                                <p class="card-text"><small class="text-muted">Categories: {{event.Category}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main3">
+        <div class="test">
+            <h3>sport</h3>
+            <div class="text">From rowdy boxing contests to boozy darts events, bike races, football matches and panels
+                with some of the world's biggest sporting stars - there's plenty to choose from our sports section
+            </div>
+        </div>
+        <br>
+        <div class="container comedy">
+            <br>
+            <div class="row-fluid card-deck">
+                {% for event in test %}
+                {% if event.Category == "sport" %}
+                <div class="col-xs-3 searchCard">
+                    <div class="card-columns-fluid">
+                        <div class="card  bg-light"style="max-width: 20rem;">
+                            <img class="card-img-top picture1"
+                                 src="{% static 'media/' %}{{event.pic}}.jpg"
+                                 alt="Card image cap">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{event.name}}</h5>
+                                <p class="card-text">address:
+                                <p style="">{{event.address}}</p></p>
+                                <p class="card-text"><small class="text-muted">Categories: {{event.Category}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container-fluid main4">
+        <div class="test">
+            <h3>experiences & attractions</h3>
+            <div class="text">For those amongst us who seek new and exciting experiences, or maybe some of the more
+                niche UK attractions available, we've got a tonne of innovative ventures and events, set to stimulate
+                your senses and bring much enjoyment
+            </div>
+        </div>
+        <br>
+        <div class="container comedy">
+
+            <div class="row-fluid card-deck">
+                {% for event in test %}
+                {% if event.Category == "experiences" %}
+                <div class="col-xs-3 searchCard">
+                    <div class="card-columns-fluid">
+                        <div class="card  bg-light"style="max-width: 20rem;">
+                            <img class="card-img-top picture1"
+                                 src="{% static 'media/' %}{{event.pic}}.jpg"
+                                 alt="Card image cap">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{event.name}}</h5>
+                                <p class="card-text">address:
+                                <p style="">{{event.address}}</p></p>
+                                <p class="card-text"><small class="text-muted">Categories: {{event.Category}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid main5">
+        <div class="test">
+            <h3>Theater</h3>
+            <div class="text">For those amongst us who seek new and exciting experiences, or maybe some of the more
+                niche UK attractions available, we've got a tonne of innovative ventures and events, set to stimulate
+                your senses and bring much enjoyment
+            </div>
+        </div>
+        <br>
+        <div class="container comedy">
+
+            <div class="row-fluid card-deck">
+                {% for event in test %}
+                {% if event.Category == "Concert" %}
+                <div class="col-xs-3 searchCard">
+                    <div class="card-columns-fluid">
+                        <div class="card  bg-light"style="max-width: 20rem;">
+                            <img class="card-img-top picture1"
+                                 src="{% static 'media/' %}{{event.pic}}.jpg"
+                                 alt="Card image cap">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{event.name}}</h5>
+                                <p class="card-text">address:
+                                <p style="">{{event.address}}</p></p>
+                                <p class="card-text"><small class="text-muted">Categories: {{event.Category}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</div>
+{% endblock %}
