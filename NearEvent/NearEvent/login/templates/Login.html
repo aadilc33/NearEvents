@@ -1,0 +1,279 @@
+{% load static %}
+
+<!DocType html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, intial-scal=1.0" name="viewport">
+    <title>{% block title %}{% endblock %}</title>
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="icon" type="image/jpg" href="{% static 'media/logo.jpg' %}">
+
+</head>
+<body style="background-color: black">
+<nav class="navbar navbar navbar-expand-lg navbar-light navbar-expand-sm navbar navbar-fixed-top navbar fixed-top navbar-custom1">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'media/logo.jpg' %}">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'events' %}">Whats On</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'Login' %}">Log IN</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    {% block content %}
+
+    <section class="pb-4" style="margin-top: 82px;
+">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-7 col-xl-6" style="background-color: aliceblue;">
+
+                    <div class="px-5 ms-xl-4">
+                        <span class="h1 fw-bold mb-0"><img src="{% static 'media/logo.jpg' %}"></span>
+                    </div>
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                        <form method="POST" class="my-login-validation" id="Login" novalidate="" style="width: 23rem;">
+{% csrf_token %}
+                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form2Example18" onkeyup="labelETop()" class="form-control form-control-lg"/>
+                                <label class="form-label" for="form2Example18" >Email address</label>
+                                <small></small>
+                                <div class="form-notch" bis_skin_checked="1">
+                                    <div class="form-notch-leading" style="width: 9px;" bis_skin_checked="1"></div>
+                                    <div class="form-notch-middle" style="width: 88.8px;" bis_skin_checked="1"></div>
+                                    <div class="form-notch-trailing" bis_skin_checked="1"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form2Example28" onkeyup="labelPTop()" class="form-control form-control-lg"/>
+                                <label class="form-label" for="form2Example28">Password</label>
+                                <div class="form-notch" bis_skin_checked="1">
+                                    <div class="form-notch-leading" style="width: 9px;" bis_skin_checked="1"></div>
+                                    <div class="form-notch-middle" style="width: 64.8px;" bis_skin_checked="1"></div>
+                                    <div class="form-notch-trailing" bis_skin_checked="1"></div>
+                                </div>
+                                <small></small>
+                            </div>
+                            <div class="pt-1 mb-4">
+                                <input id="Submit" class="btn btn-info btn-lg btn-block"  type="submit"
+                                       value="Login"/>
+                            </div>
+
+                            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+                            <p>Don't have an account? <a href="/register" class="link-info">Register here</a></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5">
+                    <img src="{% static 'media/32.jpg' %}"
+                         alt="Login image" style="object-fit: cover; object-position: left;width: 72%;">
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</div>
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+
+</script>
+<script>
+const emailID = document.querySelector('#form2Example18');
+const pass = document.querySelector('#form2Example28');
+
+const form = document.querySelector('#Login');
+
+
+
+
+const verifyEmail = () => {
+    let valid = false;
+    const email = emailID.value.trim();
+    if (!isRequired(email)) {
+        showError(emailID, 'Email cannot be blank.');
+    } else if (!isEmailValid(email)) {
+        showError(emailID, 'Email is not valid.')
+    } else {
+        showSuccess(emailID);
+        valid = true;
+    }
+    return valid;
+};
+
+const verifyP = () => {
+    let valid = false;
+
+
+    const password = pass.value.trim();
+
+    if (!isRequired(password)) {
+        showError(pass, 'Password cannot be blank.');
+    }  else {
+        showSuccess(pass);
+        valid = true;
+    }
+
+    return valid;
+};
+
+
+const isEmailValid = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
+
+const isPasswordSecure = (password) => {
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    return re.test(password);
+};
+
+const isRequired = value => value === '' ? false : true;
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+
+const showError = (input, message) => {
+    // get the form-field element
+    const formField = input.parentElement;
+    // add the error class
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+    // show the error message
+    const error = formField.querySelector('small');
+    error.textContent = message;
+};
+
+const showSuccess = (input) => {
+    // get the form-field element
+    const formField = input.parentElement;
+
+    // remove the error class
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    // hide the error message
+    const error = formField.querySelector('small');
+    error.textContent = '';
+}
+
+
+form.addEventListener('submit', function (e) {
+    // prevent the form from submitting
+    e.preventDefault();
+
+    // validate fields
+    let isEmailValid = verifyEmail(),
+        isPasswordValid = verifyP();
+
+    let isFormValid =
+        isEmailValid &&
+        isPasswordValid;
+
+
+});
+
+
+const debounce = (fn, delay = 500) => {
+    let timeoutId;
+    return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
+
+form.addEventListener('input', debounce(function (e) {
+    switch (e.target.id) {
+       case 'email':
+            verifyEmail();
+            break;
+        case 'password':
+            verifyP();
+            break;
+
+    }
+}));
+
+
+function labelETop()
+    {
+        const emailID = document.querySelector('#form2Example18');
+        const pass = document.querySelector('#form2Example28');
+        if(emailID.value.trim()=='')
+        {
+            emailID.classList.remove("active");
+        }
+        else
+        {
+        emailID.classList.add("active");
+        }
+
+    }
+function labelPTop()
+    {
+        const pass = document.querySelector('#form2Example28');
+        if(pass.value.trim()=='')
+        {
+            pass.classList.remove("active");
+        }
+        else
+        {
+        pass.classList.add("active");
+        }
+
+    }
+
+</script>
+</body>
+</html>
