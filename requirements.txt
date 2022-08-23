@@ -53,3 +53,4 @@ urllib3==1.26.9
 virtualenv==20.15.1
 virtualenvwrapper-win==1.2.7
 zipp==1.2.0
+whitenoise==6.2.0
